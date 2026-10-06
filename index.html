@@ -1,0 +1,813 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>卒園アルバム制作代行｜おさんぽフォト</title>
+<meta name="description" content="保育園・幼稚園・こども園の卒園アルバムを、写真を選ぶところからレイアウト、製本の手配までお引き受けします。先生にお願いするのは、最初のご準備と写真のアップだけです。">
+<meta property="og:type" content="website">
+<meta property="og:title" content="卒園アルバム制作代行｜おさんぽフォト">
+<meta property="og:description" content="保育園・幼稚園・こども園の卒園アルバムを、写真を選ぶところからレイアウト、製本の手配までお引き受けします。先生にお願いするのは、最初のご準備と写真のアップだけです。">
+<meta property="og:locale" content="ja_JP">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@200;300;400;500&family=Zen+Kaku+Gothic+New:wght@400;500;700&display=swap">
+<style>
+html{color-scheme:light}
+body{margin:0}
+img{max-width:100%}
+[hidden]{display:none !important}
+</style>
+<style>
+/* Layout: 2色（淡いグレージュと墨）で組む。色は黄色の点ひとつだけ。
+   冒頭は細い欧文を画面いっぱいに大きく置き、各節は左に大きな欧文タイトル、右に本文の2カラム。
+   区切りは細い罫線と余白。大事な箇所（流れ・料金・相談）だけ角の丸い面にのせる。 */
+:root{
+  --bg:#f3f2ee;
+  --panel:#ffffff;
+  --ink:#1b1b19;
+  --muted:#75736c;
+  --line:rgba(27,27,25,.15);
+  --dot:#f3c530;
+  --font-en:"Outfit","Helvetica Neue",Arial,sans-serif;
+  --font-jp:"Zen Kaku Gothic New","Hiragino Kaku Gothic ProN","Yu Gothic",sans-serif;
+}
+*{box-sizing:border-box}
+body{
+  background:var(--bg); color:var(--ink);
+  font-family:var(--font-jp); font-size:15px; line-height:2; letter-spacing:.06em;
+  font-feature-settings:"palt"; -webkit-font-smoothing:antialiased;
+}
+h1,h2,h3,h4,p,ol,ul,dl,dd,dt{margin:0}
+ol,ul{padding:0; list-style:none}
+a{color:inherit}
+a:focus-visible,summary:focus-visible{outline:2px solid var(--ink); outline-offset:4px; border-radius:4px}
+.wrap{max-width:1240px; margin-inline:auto; padding-inline:clamp(20px,4vw,48px)}
+.en{font-family:var(--font-en); letter-spacing:-.02em}
+
+/* ---------- header ---------- */
+.top{display:flex; align-items:center; justify-content:space-between; gap:24px; padding-block:28px}
+.brand{font-weight:700; font-size:15px; letter-spacing:.16em; line-height:1.5}
+.brand small{display:block; font-weight:400; font-size:11px; color:var(--muted); letter-spacing:.16em}
+.nav{display:flex; gap:32px; font-size:13px; align-items:center}
+.nav a{text-decoration:none; position:relative; padding-block:4px}
+.nav a::after{content:""; position:absolute; left:0; right:0; bottom:0; height:1px; background:var(--ink); transform:scaleX(0); transform-origin:left; transition:transform .3s ease}
+.nav a:hover::after{transform:scaleX(1)}
+.top .mini{font-size:13px; font-weight:500; text-decoration:none; border:1px solid var(--ink); border-radius:99px; padding:6px 20px; white-space:nowrap; transition:background .25s,color .25s}
+.top .mini:hover{background:var(--ink); color:var(--bg)}
+@media (max-width:900px){ .nav{display:none} }
+
+/* ---------- hero ---------- */
+.display{font-family:var(--font-en); font-weight:200; font-size:clamp(58px,13.2vw,196px); line-height:.94; letter-spacing:-.045em;
+  padding-block:clamp(28px,5vw,72px) clamp(36px,5vw,72px)}
+.display span{display:block}
+.display span + span{padding-left:clamp(36px,19vw,300px)}
+.display i{display:inline-block; width:.15em; height:.15em; border-radius:50%; background:var(--dot); margin-left:.05em}
+@keyframes rise{from{transform:translateY(.28em); opacity:0}}
+.display span{animation:rise 1s cubic-bezier(.2,.7,.1,1) both}
+.display span + span{animation-delay:.12s}
+@media (prefers-reduced-motion:reduce){ .display span{animation:none} .nav a::after,.top .mini,.btn i{transition:none} }
+
+.hero-main{display:grid; grid-template-columns:7fr 5fr; column-gap:clamp(32px,6vw,96px); border-top:1px solid var(--ink); padding-top:clamp(28px,4vw,48px)}
+.hero-main > *{min-width:0}
+.hero-main .to{font-size:12.5px; color:var(--muted); letter-spacing:.14em; margin-bottom:14px}
+h1{font-size:clamp(24px,3.1vw,40px); font-weight:500; line-height:1.6; letter-spacing:.08em}
+.lead{font-size:15px}
+.btn{display:inline-flex; align-items:center; gap:18px; margin-top:32px; background:var(--ink); color:#fff; text-decoration:none;
+  font-size:14px; font-weight:500; letter-spacing:.1em; border-radius:99px; padding:8px 8px 8px 28px}
+.btn i{width:40px; height:40px; border-radius:50%; background:#fff; color:var(--ink); display:grid; place-items:center; transition:transform .3s ease}
+.btn:hover i{transform:translateY(3px)}
+.btn svg{width:14px; height:14px}
+.facts{display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); column-gap:clamp(20px,3vw,48px); margin-top:clamp(56px,8vw,112px)}
+.facts div{border-top:1px solid var(--line); padding-top:18px}
+.facts dt{font-size:12.5px; color:var(--muted); letter-spacing:.12em}
+.facts dd{font-size:clamp(17px,1.7vw,21px); font-weight:500; line-height:1.7; margin-top:6px}
+.facts dd small{display:block; font-size:12.5px; font-weight:400; color:var(--muted)}
+@media (max-width:820px){
+  .hero-main{grid-template-columns:1fr; row-gap:24px}
+  .facts{grid-template-columns:1fr; row-gap:22px}
+}
+
+/* ---------- section frame ---------- */
+.sec{padding-block:clamp(80px,11vw,160px) 0}
+.sec-grid{display:grid; grid-template-columns:4fr 8fr; column-gap:clamp(32px,5vw,80px)}
+.sec-grid > *{min-width:0}
+.sec-head{align-self:start; position:sticky; top:40px}
+.sec-head .en{font-weight:300; font-size:clamp(42px,5.6vw,78px); line-height:1; letter-spacing:-.035em}
+.sec-head p{font-size:12.5px; letter-spacing:.16em; margin-top:16px; display:flex; align-items:center; gap:10px}
+.sec-head p::before{content:""; width:6px; height:6px; border-radius:50%; background:var(--ink)}
+h2{font-size:clamp(21px,2.3vw,29px); font-weight:500; line-height:1.7; letter-spacing:.08em; text-wrap:balance}
+h2 span{display:inline-block}
+.intro{margin-top:14px; color:var(--muted); max-width:38em}
+.content{margin-top:clamp(36px,5vw,64px)}
+@media (max-width:900px){
+  .sec-grid{grid-template-columns:1fr; row-gap:32px}
+  .sec-head{position:static}
+}
+
+.sec-grid.wide .sec-head{position:static}
+.sec-grid.wide > .content,.sec-grid.wide > .example{grid-column:1 / -1}
+.sec-grid.wide > .content{margin-top:clamp(40px,5vw,72px)}
+
+/* 行で並べる一覧（罫で区切る） */
+.rows > div{display:grid; grid-template-columns:minmax(0,5fr) minmax(0,8fr); column-gap:32px; padding-block:26px; border-top:1px solid var(--line)}
+.rows > div:last-child{border-bottom:1px solid var(--line)}
+.rows h3{font-size:18px; font-weight:500; line-height:1.7; letter-spacing:.08em}
+.rows p{font-size:14.5px; color:var(--muted)}
+@media (max-width:640px){ .rows > div{grid-template-columns:1fr; row-gap:6px} }
+.aside{margin-top:28px; font-size:13.5px; color:var(--muted); max-width:44em}
+.aside b{color:var(--ink); font-weight:500}
+
+/* 3列 */
+.tri{display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); column-gap:clamp(20px,3vw,40px); row-gap:32px}
+.tri > div{border-top:1px solid var(--ink); padding-top:20px}
+.tri h3{font-size:17px; font-weight:500; line-height:1.7; letter-spacing:.06em}
+.tri p{margin-top:10px; font-size:14.5px; color:var(--muted)}
+.tri.quad{grid-template-columns:repeat(4,minmax(0,1fr))}
+@media (max-width:1000px){ .tri.quad{grid-template-columns:repeat(2,minmax(0,1fr))} }
+@media (max-width:820px){ .tri,.tri.quad{grid-template-columns:1fr} }
+
+/* 角丸の面 */
+.panel{background:var(--panel); border-radius:clamp(18px,2.4vw,32px); padding:clamp(24px,4.4vw,64px)}
+
+/* 担当のしるし */
+.who{display:inline-flex; align-items:center; gap:7px; font-size:12px; color:var(--muted); letter-spacing:.08em; white-space:nowrap; line-height:1; font-weight:400}
+.who::before,.who.both::after{content:""; width:9px; height:9px; border-radius:50%; flex:none}
+.who.en-side::before{background:var(--dot)}
+.who.op-side::before{background:var(--ink)}
+.who.both::before{background:var(--dot)}
+.who.both::after{background:var(--ink); order:-1; margin-right:-4px}
+.legend{display:flex; flex-wrap:wrap; gap:10px 28px; margin-top:20px}
+
+/* ---------- flow ---------- */
+.flow{counter-reset:step}
+.phase{display:grid; grid-template-columns:minmax(0,3fr) minmax(0,9fr); column-gap:32px; padding-block:28px 12px; border-top:1px solid var(--ink)}
+.phase + .phase{margin-top:28px}
+.phase-h h3{font-size:19px; font-weight:500; letter-spacing:.08em; line-height:1.6}
+.phase-h p{font-size:12.5px; color:var(--muted); margin-top:4px}
+.steps li{counter-increment:step; display:grid; grid-template-columns:52px minmax(0,1fr) auto; column-gap:12px; padding-block:18px; border-bottom:1px solid var(--line); align-items:start}
+.steps li:first-child{padding-top:0}
+.steps li:last-child{border-bottom:0}
+.steps li::before{content:counter(step,decimal-leading-zero); font-family:var(--font-en); font-weight:300; font-size:21px; line-height:1.5; color:var(--muted); letter-spacing:0}
+.steps h4{font-size:16px; font-weight:500; line-height:1.9; letter-spacing:.06em}
+.steps p{font-size:14px; color:var(--muted); margin-top:2px; max-width:38em}
+.steps .who{margin-top:10px}
+@media (max-width:820px){
+  .phase{grid-template-columns:1fr; row-gap:20px}
+  .steps li{grid-template-columns:40px minmax(0,1fr)}
+  .steps .who{grid-column:2; margin-top:8px}
+}
+
+/* ---------- schedule ---------- */
+.months,.track{display:grid; grid-template-columns:repeat(6,1fr)}
+.months{font-family:var(--font-en); font-weight:300; font-size:20px; line-height:1; letter-spacing:0; padding-bottom:14px; border-bottom:1px solid var(--ink)}
+.months span{padding-left:8px; border-left:1px solid var(--line)}
+.months small{font-family:var(--font-jp); font-size:11px; margin-left:2px}
+.months .yr{font-family:var(--font-jp); font-size:12px; font-weight:400}
+.grow{padding-top:20px}
+.grow .label{font-size:14.5px; font-weight:500; line-height:1.6; display:flex; flex-wrap:wrap; gap:4px 16px; align-items:center}
+.when{font-size:12.5px; color:var(--muted); font-weight:400}
+.track{margin-top:9px; height:8px; background:repeating-linear-gradient(90deg,var(--line) 0 1px,transparent 1px calc(100%/6)); border-right:1px solid var(--line)}
+.bar{height:8px; border-radius:99px}
+.bar.op{background:var(--ink)} .bar.en{background:var(--dot)}
+.gnote{margin-top:28px; font-size:13.5px; color:var(--muted); max-width:44em}
+
+/* ---------- price ---------- */
+.qrow{display:grid; grid-template-columns:minmax(0,4fr) minmax(0,6fr) minmax(0,3fr); column-gap:28px; padding-block:clamp(22px,3vw,36px); border-top:1px solid var(--line); align-items:center}
+.qrow.qhead{border-top:0; padding-block:0 14px; font-size:12px; color:var(--muted); letter-spacing:.14em}
+.qrow:last-child{padding-bottom:0}
+.qitem b{font-size:18px; font-weight:500; display:block; line-height:1.7; letter-spacing:.08em}
+.qitem small{font-size:13px; color:var(--muted); display:block; line-height:1.8}
+.qamt{font-size:14px; line-height:1.4; display:flex; flex-wrap:wrap; align-items:baseline; gap:2px 6px}
+.qamt br{display:none}
+.qamt .per{flex-basis:100%; font-size:13px; color:var(--muted)}
+.qamt .num{font-family:var(--font-en); font-weight:200; font-size:clamp(44px,6vw,80px); letter-spacing:-.04em; line-height:1; font-variant-numeric:tabular-nums}
+.qamt .txt{font-size:clamp(20px,2.2vw,26px); font-weight:500; letter-spacing:.08em; line-height:1.6; flex-basis:100%}
+.qamt small{font-size:12.5px; color:var(--muted)}
+.qwhen{font-size:15px; font-weight:500}
+.qwhen::before{content:attr(data-label); display:none; font-size:12px; font-weight:400; color:var(--muted); margin-right:12px}
+@media (max-width:820px){
+  .qrow.qhead{display:none}
+  .qrow{grid-template-columns:1fr; row-gap:10px}
+  .qrow:nth-child(2){border-top:0; padding-top:0}
+  .qwhen::before{display:inline}
+}
+.example + .example{margin-top:8px}
+.example{margin-top:24px; font-size:13.5px; color:var(--muted); max-width:44em}
+.example b{color:var(--ink); font-weight:500}
+
+/* ---------- これまでの作り方（質問） ---------- */
+.check{display:grid; grid-template-columns:minmax(0,7fr) minmax(0,5fr); column-gap:clamp(28px,5vw,80px); row-gap:40px}
+.q{border:0; margin:0; padding:24px 0; border-bottom:1px solid var(--line); min-width:0}
+.q:first-child{padding-top:0}
+.q legend{padding:0; font-size:15.5px; font-weight:500; line-height:1.8; display:flex; gap:12px}
+.q legend i{font-family:var(--font-en); font-style:normal; font-weight:300; font-size:20px; color:var(--muted); letter-spacing:0; line-height:1.4}
+.q .hint{font-size:12px; color:var(--muted); margin-top:2px; padding-left:36px}
+.opts{display:flex; flex-wrap:wrap; gap:8px; margin-top:14px; padding-left:36px}
+.opt{position:relative; cursor:pointer}
+.opt input{position:absolute; inset:0; width:100%; height:100%; margin:0; opacity:0; cursor:pointer}
+.opt span{display:block; border:1px solid rgba(27,27,25,.3); border-radius:99px; padding:6px 17px; font-size:13.5px; line-height:1.7; transition:background .2s,color .2s}
+.opt input:checked + span{background:var(--ink); color:#fff; border-color:var(--ink)}
+.opt input:focus-visible + span{outline:2px solid var(--ink); outline-offset:3px}
+.verdict{align-self:start; position:sticky; top:40px}
+.verdict .state{font-size:12.5px; color:var(--muted); letter-spacing:.12em; display:flex; align-items:center; gap:9px}
+.verdict .state::before{content:""; width:9px; height:9px; border-radius:50%; background:var(--line)}
+.verdict[data-level="ok"] .state::before{background:#3b7f55}
+.verdict[data-level="check"] .state::before,.verdict[data-level="paid"] .state::before{background:var(--dot)}
+.verdict[data-level="hard"] .state::before{background:#c2412d}
+.verdict h3{font-size:clamp(19px,2vw,23px); font-weight:500; line-height:1.7; letter-spacing:.06em; margin-top:10px}
+.verdict .txt{font-size:14.5px; color:var(--muted); margin-top:10px}
+.verdict .txt p + p{margin-top:10px}
+.verdict .ask{color:var(--ink); border-left:2px solid var(--dot); padding-left:14px}
+.memo{margin-top:24px; border-top:1px solid var(--ink); padding-top:16px}
+.memo pre{margin:0; font-family:var(--font-jp); font-size:13px; line-height:1.9; white-space:pre-wrap; color:var(--ink)}
+.memo button{margin-top:14px; font:inherit; font-size:13px; font-weight:500; color:var(--ink); background:none; border:1px solid var(--ink); border-radius:99px; padding:6px 20px; cursor:pointer; transition:background .25s,color .25s}
+.memo button:hover{background:var(--ink); color:#fff}
+.memo .done{font-size:12.5px; color:var(--muted); margin-left:10px}
+.memo .hint{font-size:12.5px; color:var(--muted); margin-top:12px}
+@media (max-width:820px){ .check{grid-template-columns:1fr} .verdict{position:static} .opts,.q .hint{padding-left:0} }
+
+/* ---------- 試算 ---------- */
+.sim{display:grid; grid-template-columns:minmax(0,5fr) minmax(0,7fr); column-gap:clamp(28px,5vw,80px); row-gap:40px}
+.field{display:grid; gap:4px; padding-block:18px; border-bottom:1px solid var(--line)}
+.field:first-child{padding-top:0}
+.field label{font-size:13px; font-weight:500}
+.field .in{display:flex; align-items:baseline; gap:10px; font-size:14px}
+.field input{font-family:var(--font-en); font-weight:300; font-size:34px; line-height:1.3; letter-spacing:-.02em; font-variant-numeric:tabular-nums;
+  width:100%; max-width:210px; border:0; border-bottom:1px solid var(--ink); border-radius:0; background:transparent; color:var(--ink); padding:0; -moz-appearance:textfield; appearance:textfield}
+.field input::-webkit-outer-spin-button,.field input::-webkit-inner-spin-button{-webkit-appearance:none; margin:0}
+.field input:focus-visible{outline:2px solid var(--ink); outline-offset:6px}
+.field small{font-size:12px; color:var(--muted); line-height:1.7}
+.field button{font:inherit; color:var(--ink); background:none; border:0; border-bottom:1px solid var(--ink); padding:0; cursor:pointer; margin-left:4px}
+.res .lab{font-size:13px; font-weight:500}
+.res .big{font-family:var(--font-en); font-weight:200; font-size:clamp(50px,7.4vw,100px); line-height:1.05; letter-spacing:-.04em; font-variant-numeric:tabular-nums; margin-top:6px}
+.res .big span{font-family:var(--font-jp); font-weight:500; font-size:18px; letter-spacing:.06em; margin-left:6px}
+.res .per{font-size:14px; color:var(--muted); margin-top:4px}
+.res dl{margin-top:28px; border-top:1px solid var(--ink)}
+.res dl div{display:flex; justify-content:space-between; gap:16px; padding-block:12px; border-bottom:1px solid var(--line); font-size:14px; align-items:baseline}
+.res dt{color:var(--muted)}
+.res dd{font-variant-numeric:tabular-nums; font-weight:500; white-space:nowrap}
+.res dl div.total dt{color:var(--ink); font-weight:500}
+.res .note{margin-top:20px; font-size:13px; color:var(--muted)}
+@media (max-width:820px){ .sim{grid-template-columns:1fr} }
+
+/* ---------- faq ---------- */
+.faq{border-top:1px solid var(--ink)}
+.faq details{border-bottom:1px solid var(--line)}
+.faq summary{cursor:pointer; list-style:none; display:grid; grid-template-columns:minmax(0,1fr) 30px; column-gap:20px; align-items:center; padding:22px 0; font-size:15.5px; font-weight:500; line-height:1.8}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"+"; font-family:var(--font-en); font-weight:300; font-size:20px; line-height:28px; letter-spacing:0; width:30px; height:30px; border:1px solid var(--line); border-radius:50%; text-align:center}
+.faq details[open] summary::after{content:"−"; background:var(--ink); color:#fff; border-color:var(--ink)}
+.faq p{padding:0 50px 26px 0; color:var(--muted); font-size:14.5px; max-width:42em}
+
+/* ---------- contact ---------- */
+.contact .panel{background:var(--dot); display:grid; grid-template-columns:minmax(0,5fr) minmax(0,7fr); column-gap:clamp(32px,5vw,80px); align-items:end}
+.contact .en{font-weight:300; font-size:clamp(48px,8vw,116px); line-height:.95; letter-spacing:-.04em}
+.contact h2{font-size:clamp(20px,2.2vw,28px)}
+.contact .intro{color:var(--ink)}
+.contact .to{display:inline-block; margin-top:26px; background:var(--ink); color:#fff; font-weight:500; border-radius:99px; padding:11px 28px; font-size:14px; letter-spacing:.08em; line-height:1.7}
+@media (max-width:820px){ .contact .panel{grid-template-columns:1fr; row-gap:28px} }
+
+.contact .mail{margin-top:26px; display:flex; flex-wrap:wrap; align-items:center; gap:10px 16px}
+.contact .mail .lab{flex-basis:100%; font-size:12.5px; letter-spacing:.12em}
+.contact .mail .addr{font-family:var(--font-en); font-weight:400; font-size:clamp(18px,2vw,22px); letter-spacing:0; line-height:1.3; overflow-wrap:anywhere; user-select:all}
+.contact .mail button{font:inherit; font-size:13px; font-weight:500; background:none; color:var(--ink); border:1px solid var(--ink); border-radius:99px; padding:7px 20px; cursor:pointer}
+.contact .btn:hover i{transform:translate(2px,-2px)}
+.contact .mail button:focus-visible{outline:2px solid var(--ink); outline-offset:3px}
+.contact .mail .done{font-size:12.5px}
+
+/* ---------- footer ---------- */
+footer{padding-block:clamp(64px,9vw,120px) 40px}
+.wordmark{font-family:var(--font-en); font-weight:200; font-size:clamp(46px,12.4vw,188px); line-height:1; letter-spacing:-.045em; white-space:nowrap}
+.foot{display:flex; flex-wrap:wrap; gap:6px 24px; justify-content:space-between; font-size:12px; color:var(--muted); border-top:1px solid var(--line); margin-top:28px; padding-top:18px}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="top">
+    <div class="brand">おさんぽフォト<small>卒園アルバム制作</small></div>
+    <nav class="nav" aria-label="ページ内">
+      <a href="#service">おまかせできること</a>
+      <a href="#flow">ご依頼の流れ</a>
+      <a href="#price">料金</a>
+      <a href="#simulate">試算</a>
+      <a href="#faq">ご質問</a>
+    </nav>
+    <a class="mini" href="#contact">相談する</a>
+  </header>
+
+  <p class="display" lang="en" aria-hidden="true"><span>Graduation</span><span>Album<i></i></span></p>
+
+  <div class="hero-main">
+    <div>
+      <p class="to">保育園・幼稚園・こども園の先生へ</p>
+      <h1>卒園アルバムづくりを、<br>まるごとお引き受けします。</h1>
+    </div>
+    <div>
+      <p class="lead">アルバムづくりでいちばん時間がかかるのは、膨大な写真の中から子ども一人ひとりの写真を選ぶ作業です。おさんぽフォトは、その選ぶ作業から、ページのデザイン、製本の手配まで引き受けます。先生にお願いするのは、最初のご準備（名簿・顔写真・前年度のアルバム）と、Googleドライブへの写真のアップだけです。</p>
+      <a class="btn" href="#contact">相談・見積もりを依頼する<i><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 1.5v11M2.5 8 7 12.5 11.5 8"/></svg></i></a>
+    </div>
+  </div>
+
+  <dl class="facts">
+    <div><dt>先生にお願いすること</dt><dd>写真のアップと、名簿・顔写真のご用意<small>写真は選ばずに、撮ったままで構いません</small></dd></div>
+    <div><dt>制作代行料</dt><dd>基本料10万円＋1人6,000円<small>税別。製本費は別途お見積もり</small></dd></div>
+    <div><dt>お届けまで</dt><dd>写真がそろってから約3か月<small>4〜5月に締め切り、夏ごろお届け</small></dd></div>
+  </dl>
+</div>
+
+<section id="service" class="sec">
+  <div class="wrap sec-grid">
+    <div class="sec-head"><div class="en" lang="en">Service</div><p>おまかせできること</p></div>
+    <div>
+      <h2><span>写真を選ぶところから、</span><span>製本の手配まで。</span></h2>
+      <p class="intro">園で撮りためた写真をお預かりして、1冊のアルバムに仕上げてお届けします。</p>
+      <div class="content rows">
+        <div>
+          <h3>写真の選定</h3>
+          <p>Googleドライブにアップしていただいた写真から、アルバムに載せる候補を選びます。誰の写真がどのくらいあるかを子どもごとに管理し、少ないお子さんがいれば園にお知らせします。</p>
+        </div>
+        <div>
+          <h3>レイアウト・デザイン</h3>
+          <p>おさんぽフォトのデザイナーが、ページの構成とレイアウトを制作します。温かみのあるイラストも添えて、アルバムを彩ります。初年度は前年度のアルバムを踏襲し、次年度からはレイアウトや雰囲気を先生方と相談しながら作ることもできます。</p>
+        </div>
+        <div>
+          <h3>製本の手配</h3>
+          <p>製本は、卒園アルバムを専門に手がける制作会社に依頼します。製本の経験が豊富な専門業者に任せ、入稿から受け取りまでのやり取りはすべてこちらで行います。</p>
+        </div>
+      </div>
+      <p class="aside"><b>写真の撮影は、このサービスには含まれていません。</b>先生方が撮った写真をそのままお使いいただけます。行事の撮影が必要な場合は、おさんぽフォトの撮影サービスとして別にご相談ください。撮影は愛知県内のみ承っています。</p>
+    </div>
+  </div>
+</section>
+
+<section id="reason" class="sec">
+  <div class="wrap sec-grid wide">
+    <div class="sec-head"><div class="en" lang="en">Policy</div><p>大切にしていること</p></div>
+    <div>
+      <h2><span>いちばん大変な「選ぶ作業」から、</span><span>お引き受けします。</span></h2>
+      <p class="intro">レイアウトだけなら、製本会社にも頼めます。けれどその前に、膨大な写真の中から「この子にはこの写真」と一枚ずつ選ぶ作業が残ります。先生方の時間がいちばん取られるのは、ここです。おさんぽフォトは、撮ったままの写真をお預かりして、選ぶところから進めます。</p>
+    </div>
+      <div class="content tri">
+        <div>
+          <h3>先生にお願いするのは、最初の準備と写真のアップだけ</h3>
+          <p>最初に名簿、1人ずつの顔写真、前年度のアルバムをご用意いただき、あとは撮ったままの写真を、選ばずにGoogleドライブにアップしてください。選ぶ、並べる、製本会社とやり取りする、といった作業はすべてこちらで行います。</p>
+        </div>
+        <div>
+          <h3>全員がかたよりなく載るように</h3>
+          <p>アルバム候補の写真が誰に何枚あるかを、子どもごとに管理します。枚数が少ないお子さんは園にご連絡しますので、次の撮影のときに少し気にかけていただけると助かります。</p>
+        </div>
+        <div>
+          <h3>園を実際に見てから作ります</h3>
+          <p>おさんぽフォトのスタッフが一度園にお伺いし、園の雰囲気を実際に見せていただきます。保育の現場を知るスタッフが、その園らしさをアルバムに生かします。</p>
+        </div>
+      </div>
+  </div>
+</section>
+
+<section id="flow" class="sec">
+  <div class="wrap sec-grid wide">
+    <div class="sec-head"><div class="en" lang="en">Flow</div><p>ご依頼の流れ</p></div>
+    <div>
+      <h2><span>ご相談からお届けまで、</span><span>3つの時期に分けて進めます。</span></h2>
+      <div class="legend">
+        <span class="who en-side">園にお願いすること</span>
+        <span class="who op-side">おさんぽフォトが進めること</span>
+        <span class="who both">いっしょに行うこと</span>
+      </div>
+    </div>
+      <div class="content panel flow">
+        <div class="phase" style="border-top:0; padding-top:0">
+          <div class="phase-h"><h3>ご契約まで</h3><p>ご相談から、お申込み、園への訪問まで</p></div>
+          <ol class="steps">
+            <li><div>
+              <h4>ご相談</h4>
+              <p>ご相談フォームからご連絡ください。卒園児の人数が分かれば、お話を始められます。</p>
+            </div><span class="who en-side">園</span></li>
+            <li><div>
+              <h4>概算のお見積もり</h4>
+              <p>いただいた人数をもとに、概算のお見積もりをお出しします。制作代行料は、基本料100,000円と卒園児1人につき6,000円（税別）の合計です。製本費は標準的な仕様での目安をお伝えします。</p>
+            </div><span class="who op-side">おさんぽフォト</span></li>
+            <li><div>
+              <h4>ヒアリング</h4>
+              <p>オンラインでお話をうかがいます。ページ数や表紙の仕様、お届けのご希望日を決め、ご契約の内容をご説明します。</p>
+            </div><span class="who both">いっしょに</span></li>
+            <li><div>
+              <h4>正式なお見積もり</h4>
+              <p>決まった仕様で製本会社の見積もりを取り、正式なお見積もりをお出しします。</p>
+            </div><span class="who op-side">おさんぽフォト</span></li>
+            <li><div>
+              <h4>お申込み</h4>
+              <p>金額と進め方にご納得いただけたら、メールでお申込みください。お申込みをもってご契約となります。</p>
+            </div><span class="who en-side">園</span></li>
+            <li><div>
+              <h4>制作代行料のお支払い</h4>
+              <p>お申込みのあと、ご請求書をお送りします。制作代行料をお支払いください。</p>
+            </div><span class="who en-side">園</span></li>
+            <li><div>
+              <h4>園への訪問と契約書の取り交わし</h4>
+              <p>ご入金を確認してから、スタッフが園にお伺いします。園の雰囲気を実際に見せていただき、契約書を取り交わします。訪問にかかる交通費は、実費を別途いただきます。</p>
+            </div><span class="who both">いっしょに</span></li>
+          </ol>
+        </div>
+        <div class="phase">
+          <div class="phase-h"><h3>写真を集める</h3><p>年度中から、4〜5月の締め切りまで</p></div>
+          <ol class="steps">
+            <li><div>
+              <h4>名簿・顔写真・前年度のアルバムのご提出</h4>
+              <p>ご契約後、写真をやり取りするGoogleドライブのフォルダをご用意します。卒園児の名簿と、1人ずつの顔写真をご提出ください。名前と顔を照らし合わせて、子どもごとの写真の枚数を数えるために使います。前年度のアルバムも1冊お貸しください。</p>
+            </div><span class="who en-side">園</span></li>
+            <li><div>
+              <h4>写真のアップロード</h4>
+              <p>行事や日常の写真を、Googleドライブにアップしてください。選んだり整理したりする必要はありません。</p>
+            </div><span class="who en-side">園</span></li>
+            <li><div>
+              <h4>写真の選定と枚数の管理</h4>
+              <p>アップされた写真からアルバムの候補を選び、誰に何枚あるかを管理します。少ないお子さんがいれば園にご連絡しますので、撮影のときに少し気にかけてください。選んだ写真で、デザイナーがレイアウトを少しずつ作り込んでいきます。</p>
+            </div><span class="who op-side">おさんぽフォト</span></li>
+            <li><div>
+              <h4>写真データの締め切り</h4>
+              <p>卒園式までの写真がそろう4月〜5月ごろに、最後のデータをアップしてください。</p>
+            </div><span class="who en-side">園</span></li>
+          </ol>
+        </div>
+        <div class="phase">
+          <div class="phase-h"><h3>制作とお届け</h3><p>写真がそろってから約3か月</p></div>
+          <ol class="steps">
+            <li><div>
+              <h4>レイアウトの仕上げ</h4>
+              <p>年度中から作り込んできたレイアウトを、そろった写真で仕上げます。温かみのあるイラストも添えます。</p>
+            </div><span class="who op-side">おさんぽフォト</span></li>
+            <li><div>
+              <h4>仕上がりのご確認</h4>
+              <p>製本に進む前に、全ページをご覧いただきます。名前の表記に誤りがないかをご確認ください。</p>
+            </div><span class="who en-side">園</span></li>
+            <li><div>
+              <h4>製本費のお支払い</h4>
+              <p>製本に入るタイミングで、製本費をお支払いください。</p>
+            </div><span class="who en-side">園</span></li>
+            <li><div>
+              <h4>製本・お届け</h4>
+              <p>卒園アルバム専門の制作会社で製本し、園にお届けします。</p>
+            </div><span class="who op-side">おさんぽフォト</span></li>
+          </ol>
+        </div>
+      </div>
+  </div>
+</section>
+
+<section id="prepare" class="sec">
+  <div class="wrap sec-grid wide">
+    <div class="sec-head"><div class="en" lang="en">Prepare</div><p>ご用意いただくもの</p></div>
+    <div>
+      <h2><span>園にお願いするのは、</span><span>この4つです。</span></h2>
+      <p class="intro">やり取りはすべてGoogleドライブで行います。</p>
+    </div>
+      <div class="content tri quad">
+        <div>
+          <h3>写真データ</h3>
+          <p>行事や日常の写真。選ばずに、そのままGoogleドライブにアップしてください。</p>
+        </div>
+        <div>
+          <h3>卒園児の名簿</h3>
+          <p>アルバムに載せる名前の表記が分かるもの。</p>
+        </div>
+        <div>
+          <h3>1人ずつの顔写真</h3>
+          <p>卒園児一人ひとりの顔が分かる写真。写真の枚数を子どもごとに数えるために使います。</p>
+        </div>
+        <div>
+          <h3>前年度のアルバム</h3>
+          <p>1冊お貸しください。初年度は、前年度の構成や雰囲気を踏襲して作ります。</p>
+        </div>
+      </div>
+  </div>
+</section>
+
+<section id="check" class="sec">
+  <div class="wrap sec-grid wide">
+    <div class="sec-head"><div class="en" lang="en">Check</div><p>ご相談の前に</p></div>
+    <div>
+      <h2><span>これまでのアルバムの作り方を、</span><span>教えてください。</span></h2>
+      <p class="intro">おさんぽフォトは、園の手元にある写真データからアルバムを作ります。撮影した業者から写真データを受け取れるかどうかで、進め方が変わります。</p>
+    </div>
+    <div class="content panel check">
+      <div>
+        <fieldset class="q">
+          <legend><i>01</i>行事や日常の写真は、誰が撮っていますか。</legend>
+          <p class="hint">当てはまるものをすべて選んでください。</p>
+          <div class="opts">
+            <label class="opt"><input type="checkbox" id="q1-teacher" name="q1" value="先生"><span>先生</span></label>
+            <label class="opt"><input type="checkbox" id="q1-sales" name="q1" value="写真販売サービスのカメラマン"><span>写真販売サービスのカメラマン</span></label>
+            <label class="opt"><input type="checkbox" id="q1-studio" name="q1" value="写真館・依頼したカメラマン"><span>写真館・依頼したカメラマン</span></label>
+            <label class="opt"><input type="checkbox" id="q1-osanpo" name="q1" value="おさんぽフォト"><span>おさんぽフォト</span></label>
+          </div>
+        </fieldset>
+        <fieldset class="q">
+          <legend><i>02</i>業者が撮った写真のデータを、園は受け取れますか。</legend>
+          <p class="hint">業者に撮影を頼んでいない場合は、答えなくて構いません。</p>
+          <div class="opts">
+            <label class="opt"><input type="radio" id="q2-free" name="q2" value="無料で受け取れる"><span>無料で受け取れる</span></label>
+            <label class="opt"><input type="radio" id="q2-paid" name="q2" value="有料なら受け取れる"><span>有料なら受け取れる</span></label>
+            <label class="opt"><input type="radio" id="q2-no" name="q2" value="受け取れない"><span>受け取れない</span></label>
+            <label class="opt"><input type="radio" id="q2-unknown" name="q2" value="わからない"><span>わからない</span></label>
+          </div>
+        </fieldset>
+        <fieldset class="q">
+          <legend><i>03</i>これまで、アルバムに載せる写真を選んでいたのは誰ですか。</legend>
+          <div class="opts">
+            <label class="opt"><input type="radio" id="q3-teacher" name="q3" value="先生"><span>先生</span></label>
+            <label class="opt"><input type="radio" id="q3-parent" name="q3" value="保護者（アルバム係）"><span>保護者（アルバム係）</span></label>
+            <label class="opt"><input type="radio" id="q3-vendor" name="q3" value="業者や写真館"><span>業者や写真館</span></label>
+            <label class="opt"><input type="radio" id="q3-unknown" name="q3" value="わからない"><span>わからない</span></label>
+          </div>
+        </fieldset>
+      </div>
+      <div class="verdict" id="verdict" data-level="none" aria-live="polite">
+        <p class="state" id="v-state">まだ答えていません</p>
+        <h3 id="v-title">質問に答えると、進め方がここに出ます。</h3>
+        <div class="txt" id="v-txt"><p>写真を誰が撮っているかと、そのデータを園が受け取れるかを教えてください。</p></div>
+        <div class="memo" id="memo" hidden>
+          <pre id="memo-text"></pre>
+          <button type="button" id="memo-copy">回答をコピーする</button><span class="done" id="memo-done" hidden>コピーしました</span>
+          <p class="hint">コピーした内容は、<a href="https://docs.google.com/forms/d/e/1FAIpQLSc-LU_u1pxt2W8-uXZMXkRk-8XHmbFkie3doA8gcWczgkk89A/viewform" target="_blank" rel="noopener">ご相談フォーム</a>の「ご相談の前に」の回答欄に貼り付けてください。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="price" class="sec">
+  <div class="wrap sec-grid wide">
+    <div class="sec-head"><div class="en" lang="en">Price</div><p>料金</p></div>
+    <div>
+      <h2><span>制作代行料と製本費の、</span><span>合計です。</span></h2>
+      <p class="intro">制作代行料は、基本料と卒園児の人数で決まります。お支払いは2回に分かれます。</p>
+    </div>
+      <div class="content panel">
+        <div class="qrow qhead"><span>項目</span><span>金額</span><span>お支払いの時期</span></div>
+        <div class="qrow">
+          <div class="qitem"><b>制作代行料　基本料</b><small>園への訪問、デザイン、イラスト、進行管理、製本の手配</small></div>
+          <div class="qamt"><span class="per">1園につき</span><span class="num">100,000</span><span>円 <small>（税別）</small></span></div>
+          <div class="qwhen" data-label="お支払いの時期">お申込みのあと</div>
+        </div>
+        <div class="qrow">
+          <div class="qitem"><b>制作代行料　人数分</b><small>写真の選定、子どもごとの枚数の管理</small></div>
+          <div class="qamt"><span class="per">卒園児1人につき</span><span class="num">6,000</span><span>円 <small>（税別）</small></span></div>
+          <div class="qwhen" data-label="お支払いの時期">お申込みのあと</div>
+        </div>
+        <div class="qrow">
+          <div class="qitem"><b>製本費</b><small>卒園アルバム専門の制作会社での製本にかかる費用</small></div>
+          <div class="qamt"><span class="txt">別途お見積もり</span><br><small>ページ数によって変わります</small></div>
+          <div class="qwhen" data-label="お支払いの時期">製本に入るとき</div>
+        </div>
+      </div>
+      <p class="example">たとえば卒園児が25人の園では、制作代行料は基本料100,000円＋6,000円×25人で <b>250,000円（税別）</b> です。これに製本費が加わります。</p>
+      <p class="example">園への訪問にかかる交通費は、実費を別途いただきます。</p>
+      <p class="example">保護者の方と法人のどちらが、どれだけ負担するかは、園で自由に決めていただけます。</p>
+  </div>
+</section>
+
+<section id="simulate" class="sec">
+  <div class="wrap sec-grid wide">
+    <div class="sec-head"><div class="en" lang="en">Estimate</div><p>試算</p></div>
+    <div>
+      <h2><span>例年と比べていくら変わるかを、</span><span>試算できます。</span></h2>
+      <p class="intro">卒園児の人数と、例年の集金額を入れてください。製本費は人数から目安を自動で入れます。入っている数字は例です。</p>
+    </div>
+    <div class="content panel sim">
+      <div>
+        <div class="field">
+          <label for="sim-n">卒園児の人数</label>
+          <div class="in"><input id="sim-n" type="number" inputmode="numeric" min="1" step="1" value="25">人</div>
+        </div>
+        <div class="field">
+          <label for="sim-c">例年の集金額（1人あたり）</label>
+          <div class="in"><input id="sim-c" type="number" inputmode="numeric" min="0" step="100" value="15000">円</div>
+          <small>これまで保護者の方から集めていたアルバム代。</small>
+        </div>
+        <div class="field">
+          <label for="sim-b">製本費の目安（1冊あたり・税込）</label>
+          <div class="in"><input id="sim-b" type="number" inputmode="numeric" min="0" step="100" value="7500">円</div>
+          <small>人数から自動で入る目安です。ハードカバー・24ページ前後を想定しています。冊数が60冊より少ない場合は、1冊あたりの金額がこの目安より高くなる可能性があります。 <button type="button" id="sim-reset" hidden>目安に戻す</button></small>
+        </div>
+      </div>
+      <div class="res" aria-live="polite">
+        <p class="lab" id="sim-lab">例年より増える金額（合計）</p>
+        <p class="big"><b id="sim-diff" style="font-weight:inherit">87,500</b><span>円</span></p>
+        <p class="per" id="sim-per">1人あたり 3,500円の増</p>
+        <dl>
+          <div><dt>制作代行料（税込）</dt><dd id="sim-fee">275,000円</dd></div>
+          <div><dt>製本費（目安）</dt><dd id="sim-bind">187,500円</dd></div>
+          <div class="total"><dt>今回の総額</dt><dd id="sim-total">462,500円</dd></div>
+          <div><dt>今回の1人あたり</dt><dd id="sim-each">18,500円</dd></div>
+          <div><dt>例年の集金の合計</dt><dd id="sim-prev">375,000円</dd></div>
+        </dl>
+        <p class="note">この差額を保護者の方の集金でまかなうか、法人で負担するかは、園で自由に決めていただけます。制作代行料は基本料100,000円＋卒園児1人6,000円に消費税10%を加えた金額です。園への訪問にかかる交通費は含んでいません。</p>
+        <p class="note">試算はあくまで目安です。正確な金額は、<a href="https://docs.google.com/forms/d/e/1FAIpQLSc-LU_u1pxt2W8-uXZMXkRk-8XHmbFkie3doA8gcWczgkk89A/viewform" target="_blank" rel="noopener">ご相談フォーム</a>からお問い合わせいただければ、お見積もりをお出しします。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="faq" class="sec">
+  <div class="wrap sec-grid">
+    <div class="sec-head"><div class="en" lang="en">FAQ</div><p>よくいただくご質問</p></div>
+    <div class="faq">
+      <details>
+        <summary>アルバムはいつ届きますか。</summary>
+        <p>卒園式までの写真を載せられるよう、写真データを4月〜5月ごろに締め切り、そこから約3か月で完成します。お届けは卒園後の夏ごろです。お届けのご希望日が決まっている場合は、そこから逆算して写真データの締め切りを決めます。</p>
+      </details>
+      <details>
+        <summary>写真が少ない子がいる場合はどうなりますか。</summary>
+        <p>アルバム候補の写真が誰に何枚あるかを、こちらで管理しています。枚数が少ないお子さんがいれば園にご連絡しますので、次の撮影のときに少し気にかけていただけると助かります。</p>
+      </details>
+      <details>
+        <summary>先生は何をすればよいですか。</summary>
+        <p>Googleドライブに写真をアップしてください。最初に名簿、1人ずつの顔写真、前年度のアルバムをご用意いただき、製本の前に名前の表記をご確認いただきます。写真を選ぶ作業やレイアウトはこちらで行います。</p>
+      </details>
+      <details>
+        <summary>これまでのアルバムと、雰囲気が大きく変わりますか。</summary>
+        <p>初年度は、前年度のアルバムの構成や雰囲気を踏襲して作ります。そのうえで、おさんぽフォトのデザイナーによるカットやイラストを少しずつ加えていきます。次年度からは、レイアウトや雰囲気を先生方と相談しながら作ることもできます。</p>
+      </details>
+      <details>
+        <summary>製本会社のデザイナー制作と、何が違いますか。</summary>
+        <p>製本会社のデザイナー制作は、選び終えた写真をレイアウトするサービスです。おさんぽフォトは、その前の「膨大な写真の中から選ぶ」作業から引き受けます。誰の写真が何枚あるかも子どもごとに管理するので、先生が一枚ずつ確かめる必要はありません。</p>
+      </details>
+      <details>
+        <summary>製本はどこで行いますか。</summary>
+        <p>卒園アルバムを専門に手がける制作会社に依頼します。製本の経験が豊富な専門業者に任せることで、仕上がりの品質を確保しています。</p>
+      </details>
+      <details>
+        <summary>製本費はどのくらいかかりますか。</summary>
+        <p>ページ数によって変わります。ご希望のページ数をうかがってから、制作代行料とあわせてお見積もりをお出しします。</p>
+      </details>
+      <details>
+        <summary>保護者からの集金はどうなりますか。</summary>
+        <p>おさんぽフォトへのお支払いは、制作代行料と製本費の合計です。これを保護者の方からの集金でまかなうか、一部を法人で負担するかは、園で自由に決めていただけます。例年との差額は、このページの試算で確かめられます。</p>
+      </details>
+      <details>
+        <summary>お支払いはいつですか。</summary>
+        <p>制作代行料は、お申込みのあと、園への訪問の前にお支払いいただきます。製本費は、製本に入るタイミングでお支払いいただきます。</p>
+      </details>
+      <details>
+        <summary>撮影は業者に頼んでいます。その写真は使えますか。</summary>
+        <p>園が写真データを受け取れる場合は使えます。データの受け取りが有料の場合や、受け取れない場合は進め方が変わりますので、「ご相談の前に」の質問で確かめてからご相談ください。</p>
+      </details>
+      <details>
+        <summary>撮影もあわせてお願いできますか。</summary>
+        <p>アルバム制作とは別に、おさんぽフォトの撮影サービスとしてご相談いただけます。撮影は愛知県内のみ承っています。</p>
+      </details>
+    </div>
+  </div>
+</section>
+
+<section id="contact" class="sec contact">
+  <div class="wrap">
+    <div class="panel">
+      <div class="en" lang="en">Contact</div>
+      <div>
+        <h2><span>まずは、卒園児の人数を</span><span>教えてください。</span></h2>
+        <p class="intro">人数とページ数のご希望が分かれば、制作代行料と製本費をあわせたお見積もりをお出しします。</p>
+        <a class="btn" href="https://docs.google.com/forms/d/e/1FAIpQLSc-LU_u1pxt2W8-uXZMXkRk-8XHmbFkie3doA8gcWczgkk89A/viewform" target="_blank" rel="noopener">ご相談フォームを開く<i><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.5 10.5l7-7M5 3.5h5.5V9"/></svg></i></a>
+        <div class="mail">
+          <span class="lab">メールでも受け付けています</span>
+          <span class="addr" id="mail-addr">info@osanpophoto.com</span>
+          <button type="button" id="mail-copy">アドレスをコピー</button><span class="done" id="mail-done" hidden>コピーしました</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="wrap">
+  <footer>
+    <div class="wordmark" lang="en" aria-hidden="true">Osanpo Photo</div>
+    <div class="foot">
+      <span>おさんぽフォト株式会社｜園の写真・映像のサービス　<a href="https://osanpophoto.studio.site/" target="_blank" rel="noopener">おさんぽフォトのサイトを見る</a></span>
+      <span>愛知県瀬戸市</span>
+    </div>
+  </footer>
+</div>
+
+<script>
+(function(){
+  function calc(n, bind, prev){
+    var fee = (100000 + 6000 * n) * 11 / 10;
+    var bindTotal = bind * n;
+    var total = fee + bindTotal;
+    var prevTotal = prev * n;
+    return { fee: fee, bind: bindTotal, total: total, each: Math.round(total / n), prev: prevTotal, diff: total - prevTotal, diffEach: Math.round((total - prevTotal) / n) };
+  }
+  /* 製本費の目安：固定30,000円＋1冊6,300円（税込）。60冊の実績見積もり（約6,800円/冊）と、少部数の公開価格に合わせた仮の式 */
+  function bindGuess(n){ return Math.round((30000 + 6300 * n) / n / 100) * 100; }
+  var manual = false;
+  window.__simCalc = calc; window.__bindGuess = bindGuess;
+  var yen = function(v){ return Math.round(v).toLocaleString('ja-JP'); };
+  var $ = function(id){ return document.getElementById(id); };
+  function num(id, min){ var v = parseFloat($(id).value); if (!isFinite(v) || v < min) v = min; return v; }
+  function render(){
+    var n = Math.max(1, Math.floor(num('sim-n', 1)));
+    if (!manual) $('sim-b').value = bindGuess(n);
+    $('sim-reset').hidden = !manual;
+    var r = calc(n, num('sim-b', 0), num('sim-c', 0));
+    var up = r.diff > 0, same = r.diff === 0;
+    $('sim-lab').textContent = same ? '例年との差（合計）' : (up ? '例年より増える金額（合計）' : '例年より減る金額（合計）');
+    $('sim-diff').textContent = yen(Math.abs(r.diff));
+    $('sim-per').textContent = same ? '例年と同じ金額です' : '1人あたり ' + yen(Math.abs(r.diffEach)) + '円の' + (up ? '増' : '減');
+    $('sim-fee').textContent = yen(r.fee) + '円';
+    $('sim-bind').textContent = yen(r.bind) + '円';
+    $('sim-total').textContent = yen(r.total) + '円';
+    $('sim-each').textContent = yen(r.each) + '円';
+    $('sim-prev').textContent = yen(r.prev) + '円';
+  }
+  ['sim-n','sim-c'].forEach(function(id){ $(id).addEventListener('input', render); });
+  $('sim-b').addEventListener('input', function(){ manual = true; render(); });
+  $('sim-reset').addEventListener('click', function(){ manual = false; render(); });
+  render();
+})();
+</script>
+
+<script>
+(function(){
+  /* q1: 選ばれた撮影者の配列, q2/q3: 選ばれた値（なければ ''） */
+  function decide(q1, q2, q3){
+    var has = function(v){ return q1.indexOf(v) > -1; };
+    var teacher = has('先生'), osanpo = has('おさんぽフォト');
+    var vendor = has('写真販売サービスのカメラマン') || has('写真館・依頼したカメラマン');
+    var r = { level:'none', state:'まだ答えていません', title:'質問に答えると、進め方がここに出ます。', txt:['写真を誰が撮っているかと、そのデータを園が受け取れるかを教えてください。'], ask:'' };
+    if (!q1.length) return r;
+    if (!vendor || q2 === '無料で受け取れる') {
+      r.level = 'ok'; r.state = '進められます'; r.title = 'このまま進められます。';
+      r.txt = ['写真データは園の手元にあります。Googleドライブにアップしていただければ、写真を選ぶ作業から始められます。'];
+    } else if (q2 === '') {
+      r.state = 'あと少しです'; r.title = '業者の写真データについて、2つめの質問にお答えください。'; r.txt = ['業者が撮った写真を使えるかどうかで、進め方が変わります。'];
+      return r;
+    } else if (q2 === 'わからない') {
+      r.level = 'check'; r.state = '確認が必要です'; r.title = '撮影した業者への確認をお願いします。';
+      r.txt = ['業者が撮った写真のデータを園が受け取れるかどうかで、進め方が変わります。次のように聞いてみてください。'];
+      r.ask = '卒園アルバムに使うため、撮影した写真の元データを園に提供してもらえますか。費用はかかりますか。';
+    } else if (q2 === '有料なら受け取れる') {
+      r.level = 'paid'; r.state = '費用の確認が必要です'; r.title = 'データの費用を含めてご相談ください。';
+      r.txt = ['写真データの受け取りにかかる費用は、制作代行料や製本費とは別に必要です。金額が分かればお知らせください。'];
+      if (teacher) r.txt.push('先生が撮った写真だけで作る方法もあります。');
+    } else {
+      r.level = 'hard';
+      if (teacher || osanpo) {
+        r.state = '使える写真が限られます'; r.title = '園の手元にある写真だけで作る形になります。';
+        r.txt = ['業者が撮った写真は使えないため、行事の写真が少なくなることがあります。撮影からおさんぽフォトに依頼いただく方法もあります（愛知県内）。'];
+      } else {
+        r.state = 'このままでは難しいです'; r.title = 'このままでは、お引き受けが難しいです。';
+        r.txt = ['おさんぽフォトは、園の手元にある写真データからアルバムを作ります。データを受け取れない場合は、撮影からおさんぽフォトに依頼いただく方法があります（愛知県内）。まずはご相談ください。'];
+      }
+    }
+    if (q3 === '先生' || q3 === '保護者（アルバム係）') r.txt.push('これまで' + (q3 === '先生' ? '先生' : '保護者の方') + 'が行っていた写真を選ぶ作業は、おさんぽフォトが引き受けます。');
+    if (q3 === '業者や写真館') r.txt.push('これまでも業者が写真を選んでいた場合、先生の作業は大きくは変わりません。料金と仕上がりを比べてご検討ください。');
+    return r;
+  }
+  window.__decide = decide;
+  var $ = function(id){ return document.getElementById(id); };
+  var picked = function(name){ return Array.prototype.slice.call(document.querySelectorAll('input[name="' + name + '"]:checked')).map(function(e){ return e.value; }); };
+  function render(){
+    var q1 = picked('q1'), q2 = picked('q2')[0] || '', q3 = picked('q3')[0] || '';
+    var r = decide(q1, q2, q3);
+    $('verdict').setAttribute('data-level', r.level);
+    $('v-state').textContent = r.state;
+    $('v-title').textContent = r.title;
+    var box = $('v-txt'); box.textContent = '';
+    r.txt.forEach(function(t, i){
+      var p = document.createElement('p'); p.textContent = t; box.appendChild(p);
+      if (i === 0 && r.ask) { var a = document.createElement('p'); a.className = 'ask'; a.textContent = '「' + r.ask + '」'; box.appendChild(a); }
+    });
+    var lines = ['【卒園アルバムのご相談】', '撮影している人：' + (q1.join('、') || '未回答'), '業者の写真データ：' + (q2 || '未回答'), 'これまで写真を選んでいた人：' + (q3 || '未回答')];
+    var n = $('sim-n'), c = $('sim-c');
+    if (n && c) lines.push('卒園児の人数：' + n.value + '人', '例年の集金額：1人 ' + Number(c.value || 0).toLocaleString('ja-JP') + '円');
+    $('memo-text').textContent = lines.join('\n');
+    $('memo').hidden = !q1.length;
+    $('memo-done').hidden = true;
+  }
+  Array.prototype.forEach.call(document.querySelectorAll('#check input'), function(el){ el.addEventListener('change', render); });
+  ['sim-n','sim-c'].forEach(function(id){ var el = $(id); if (el) el.addEventListener('input', render); });
+  $('memo-copy').addEventListener('click', function(){
+    var text = $('memo-text').textContent;
+    var ok = function(){ $('memo-done').textContent = 'コピーしました'; $('memo-done').hidden = false; };
+    var fallback = function(){ var rg = document.createRange(); rg.selectNodeContents($('memo-text')); var sel = window.getSelection(); sel.removeAllRanges(); sel.addRange(rg); $('memo-done').textContent = '選択しました。コピーしてお使いください'; $('memo-done').hidden = false; };
+    if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(text).then(ok, fallback); else fallback();
+  });
+  render();
+})();
+</script>
+
+<script>
+(function(){
+  var btn = document.getElementById('mail-copy'), addr = document.getElementById('mail-addr'), done = document.getElementById('mail-done');
+  if (!btn) return;
+  btn.addEventListener('click', function(){
+    var ok = function(){ done.textContent = 'コピーしました'; done.hidden = false; };
+    var fallback = function(){ var rg = document.createRange(); rg.selectNodeContents(addr); var sel = window.getSelection(); sel.removeAllRanges(); sel.addRange(rg); done.textContent = '選択しました。コピーしてお使いください'; done.hidden = false; };
+    if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(addr.textContent).then(ok, fallback); else fallback();
+  });
+})();
+</script>
+</body>
+</html>
